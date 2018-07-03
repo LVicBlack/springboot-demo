@@ -1,0 +1,18 @@
+server:
+  port: 8088
+  context-path: /springboot
+
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+
+
+name: B
+age: 18
+content: "name: ${name}, age: ${age}"
+
+ttt:
+  name: 2009
+  age: 30
