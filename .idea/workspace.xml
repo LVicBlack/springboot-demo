@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="80e6c925-e254-47e7-b6a2-e97e16d91db2" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/springboot-websocket-sockjs/src/main/java/com/websocket/sockjs/demo/controller/GreetingController.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/springboot-websocket-sockjs/src/main/java/com/websocket/sockjs/demo/vo/Greeting.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/springboot-websocket-sockjs/src/main/java/com/websocket/sockjs/demo/vo/HelloMessage.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/springboot-websocket-sockjs/src/main/java/com/websocket/sockjs/demo/config/WebSocketConfig.java" afterPath="$PROJECT_DIR$/springboot-websocket-sockjs/src/main/java/com/websocket/sockjs/demo/config/WebSocketConfig.java" />
-      <change beforePath="$PROJECT_DIR$/springboot-websocket-sockjs/src/main/resources/application-dev.yml" afterPath="$PROJECT_DIR$/springboot-websocket-sockjs/src/main/resources/application-dev.yml" />
-      <change beforePath="$PROJECT_DIR$/springboot-websocket-sockjs/src/main/webapp/WEB-INF/jsp/index.jsp" afterPath="" />
       <change beforePath="$PROJECT_DIR$/springboot-websocket-sockjs/target/classes/application-dev.yml" afterPath="$PROJECT_DIR$/springboot-websocket-sockjs/target/classes/application-dev.yml" />
       <change beforePath="$PROJECT_DIR$/springboot-websocket-sockjs/target/classes/com/websocket/sockjs/demo/config/WebSocketConfig.class" afterPath="$PROJECT_DIR$/springboot-websocket-sockjs/target/classes/com/websocket/sockjs/demo/config/WebSocketConfig.class" />
     </list>
@@ -27,10 +26,64 @@
       <file leaf-file-name="WebSocketConfig.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/springboot-websocket-sockjs/src/main/java/com/websocket/sockjs/demo/config/WebSocketConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="607">
-              <caret line="21" column="72" lean-forward="false" selection-start-line="21" selection-start-column="72" selection-end-line="21" selection-end-column="72" />
+            <state relative-caret-position="390">
+              <caret line="24" column="28" lean-forward="false" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WebSocketHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/springboot-websocket-sockjs/src/main/java/com/websocket/sockjs/demo/handler/WebSocketHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="310">
+              <caret line="15" column="66" lean-forward="false" selection-start-line="15" selection-start-column="66" selection-end-line="15" selection-end-column="66" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GreetingController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/springboot-websocket-sockjs/src/main/java/com/websocket/sockjs/demo/controller/GreetingController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="20" column="2" lean-forward="true" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Greeting.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/springboot-websocket-sockjs/src/main/java/com/websocket/sockjs/demo/vo/Greeting.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="310">
+              <caret line="10" column="5" lean-forward="false" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+              <folding>
+                <element signature="e#159#160#0" expanded="true" />
+                <element signature="e#197#198#0" expanded="true" />
+                <element signature="e#231#232#0" expanded="true" />
+                <element signature="e#261#262#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HelloMessage.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/springboot-websocket-sockjs/src/main/java/com/websocket/sockjs/demo/vo/HelloMessage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="558">
+              <caret line="18" column="5" lean-forward="false" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+              <folding>
+                <element signature="e#165#166#0" expanded="true" />
+                <element signature="e#197#198#0" expanded="true" />
+                <element signature="e#228#229#0" expanded="true" />
+                <element signature="e#255#256#0" expanded="true" />
+                <element signature="e#295#296#0" expanded="true" />
+                <element signature="e#327#328#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -46,11 +99,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WebsocketSockjsApplication.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="WebsocketSockjsApplication.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/springboot-websocket-sockjs/src/main/java/com/websocket/sockjs/demo/WebsocketSockjsApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="403">
-              <caret line="18" column="1" lean-forward="false" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+            <state relative-caret-position="217">
+              <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -93,6 +146,9 @@
         <option value="$PROJECT_DIR$/springboot-websocket-sockjs/src/main/resources/application-dev.yml" />
         <option value="$PROJECT_DIR$/springboot-websocket-sockjs/src/main/resources/META-INF/resources/WEB-INF/jsp/index.jsp" />
         <option value="$PROJECT_DIR$/springboot-websocket-sockjs/src/main/java/com/websocket/sockjs/demo/config/WebSocketConfig.java" />
+        <option value="$PROJECT_DIR$/springboot-websocket-sockjs/src/main/java/com/websocket/sockjs/demo/vo/Greeting.java" />
+        <option value="$PROJECT_DIR$/springboot-websocket-sockjs/src/main/java/com/websocket/sockjs/demo/vo/HelloMessage.java" />
+        <option value="$PROJECT_DIR$/springboot-websocket-sockjs/src/main/java/com/websocket/sockjs/demo/controller/GreetingController.java" />
       </list>
     </option>
   </component>
@@ -144,8 +200,8 @@
     <option name="jreName" value="1.8" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="58" />
-    <option name="y" value="14" />
+    <option name="x" value="103" />
+    <option name="y" value="15" />
     <option name="width" value="1860" />
     <option name="height" value="1025" />
   </component>
@@ -220,6 +276,25 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="springboot-demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="springboot-demo" type="462c0819:PsiDirectoryNode" />
+              <item name="springboot-websocket-sockjs" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="demo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="springboot-demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="springboot-demo" type="462c0819:PsiDirectoryNode" />
+              <item name="springboot-websocket-sockjs" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="demo" type="462c0819:PsiDirectoryNode" />
+              <item name="vo" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="springboot-demo" type="b2602c69:ProjectViewProjectNode" />
@@ -444,12 +519,27 @@
       <workItem from="1529652281595" duration="30000" />
       <workItem from="1529652364710" duration="17489000" />
       <workItem from="1530582677806" duration="2843000" />
-      <workItem from="1531121832152" duration="6094000" />
+      <workItem from="1531121832152" duration="9354000" />
     </task>
+    <task id="LOCAL-00001" summary="merge">
+      <created>1531134317286</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1531134317286</updated>
+    </task>
+    <task id="LOCAL-00002" summary="stomp">
+      <created>1531134373079</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1531134373079</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26456000" />
+    <option name="totallyTimeSpent" value="29716000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -461,7 +551,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="58" y="14" width="1860" height="1025" extended-state="0" />
+    <frame x="103" y="15" width="1860" height="1025" extended-state="0" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -545,6 +635,9 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/springboot" />
     </ignored-roots>
+    <MESSAGE value="merge" />
+    <MESSAGE value="stomp" />
+    <option name="LAST_COMMIT_MESSAGE" value="stomp" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -553,17 +646,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="11" column="30" lean-forward="false" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/springboot-websocket/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="310">
@@ -915,21 +997,83 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/springboot-websocket-sockjs/src/main/java/com/websocket/sockjs/demo/WebsocketSockjsApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-websocket/5.0.4.RELEASE/spring-websocket-5.0.4.RELEASE.jar!/org/springframework/web/socket/config/annotation/AbstractWebSocketMessageBrokerConfigurer.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="16" column="22" lean-forward="false" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-websocket/5.0.4.RELEASE/spring-websocket-5.0.4.RELEASE.jar!/org/springframework/web/socket/config/annotation/WebSocketMessageBrokerConfigurer.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/springboot-websocket-sockjs/src/main/java/com/websocket/sockjs/demo/config/WebSocketConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="607">
-          <caret line="21" column="72" lean-forward="false" selection-start-line="21" selection-start-column="72" selection-end-line="21" selection-end-column="72" />
+        <state relative-caret-position="390">
+          <caret line="24" column="28" lean-forward="false" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/springboot-websocket-sockjs/src/main/java/com/websocket/sockjs/demo/WebsocketSockjsApplication.java">
+    <entry file="file://$PROJECT_DIR$/springboot-websocket-sockjs/src/main/java/com/websocket/sockjs/demo/vo/Greeting.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="18" column="1" lean-forward="false" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+        <state relative-caret-position="310">
+          <caret line="10" column="5" lean-forward="false" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+          <folding>
+            <element signature="e#159#160#0" expanded="true" />
+            <element signature="e#197#198#0" expanded="true" />
+            <element signature="e#231#232#0" expanded="true" />
+            <element signature="e#261#262#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/springboot-websocket-sockjs/src/main/java/com/websocket/sockjs/demo/vo/HelloMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="558">
+          <caret line="18" column="5" lean-forward="false" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+          <folding>
+            <element signature="e#165#166#0" expanded="true" />
+            <element signature="e#197#198#0" expanded="true" />
+            <element signature="e#228#229#0" expanded="true" />
+            <element signature="e#255#256#0" expanded="true" />
+            <element signature="e#295#296#0" expanded="true" />
+            <element signature="e#327#328#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/springboot-websocket-sockjs/src/main/java/com/websocket/sockjs/demo/handler/WebSocketHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="15" column="66" lean-forward="false" selection-start-line="15" selection-start-column="66" selection-end-line="15" selection-end-column="66" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/springboot-websocket-sockjs/src/main/java/com/websocket/sockjs/demo/controller/GreetingController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="20" column="2" lean-forward="true" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
