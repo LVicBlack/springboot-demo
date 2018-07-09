@@ -1,6 +1,5 @@
 server:
   port: 8088
-  context-path: /springboot
 
 spring:
   mvc:
