@@ -2,6 +2,7 @@ package com.websocket.sockjs.demo.controller;
 
 import com.websocket.sockjs.demo.vo.Greeting;
 import com.websocket.sockjs.demo.vo.HelloMessage;
+import com.websocket.sockjs.demo.vo.Shout;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.annotation.SubscribeMapping;
@@ -18,12 +19,12 @@ public class GreetingController {
         return new Greeting("Hello, " + message.getName() + "!");
     }
 
-//
-//    @SubscribeMapping({"/marco"})
-//    public Shout handleSubscription() {
-//        Shout outgoing = new Shout();
-//        outgoing.setMessage("Polo!");
-//        return outgoing;
-//
-//    }
+
+    @SubscribeMapping({"/marco"})
+    public Shout handleSubscription() {
+        Shout outgoing = new Shout();
+        outgoing.setMessage("Polo!");
+        return outgoing;
+    }
+
 }

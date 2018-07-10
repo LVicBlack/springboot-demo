@@ -13,45 +13,73 @@
     <link href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.js"></script>
-    <script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script>
+    <script src="https://cdn.bootcss.com/sockjs-client/1.1.4/sockjs.min.js"></script>
+    <script src="https://cdn.bootcss.com/stomp.js/2.3.3/stomp.js"></script>
     <script type="text/javascript">
-        $(document).ready(function() {
-            websocket_client();
-        });
+         var stompClient = null;
 
-        function websocket_client() {
-            var hostaddr = window.location.host + "/websocket/p2ptext";
-            var url = 'p2ptext';
-            var sock = new SockJS(url);
+         function setConnected(connected) {
+             document.getElementById('connect').disabled = connected;
+             document.getElementById('disconnect').disabled = !connected;
+             document.getElementById('conversationDiv').style.visibility =  connected ? 'visible' : 'hidden';
+             document.getElementById('response').innerHTML = '';
+         }
 
-// 以下的 open(), onmessage(), onclose()
-// 对应到 ChatTextHandler 的
-// afterConnectionEstablished(), handleTextMessage(), afterConnectionClosed();
+         function connect() {
+             var socket = new SockJS('/hello');
+             stompClient = Stomp.over(socket);
+             stompClient.connect({}, function(frame) {
+                 setConnected(true);
+                 console.log('Connected: ' + frame);
+                 stompClient.subscribe('/topic/greetings', function(greeting){
+                     showGreeting(JSON.parse(greeting.body).content);
+                 });
+             });
+             // starting line.
+             stompClient.subscribe('/app/macro',function(greeting){
+                 alert(JSON.parse(greeting.body).content);
+                 showGreeting(JSON.parse(greeting.body).content);
+             }); // ending line. attention for addr '/app/macro' in client.
+         }
 
-            sock.onopen = function() {
-                alert("open successfully.");
-                sayMarco();
-            };
+         function disconnect() {
+             if (stompClient != null) {
+                 stompClient.disconnect();
+             }
+             setConnected(false);
+             console.log("Disconnected");
+         }
 
-            sock.onmessage = function(e) {
-                alert("onmessage");
-                alert(e.data);
-            };
+         function sendName() {
+             var name = document.getElementById('name').value;
+             stompClient.send("/app/hello", {}, JSON.stringify({ 'name': name }));
+         }
 
-            sock.onclose = function() {
-                alert("close");
-            };
+         function showGreeting(message) {
+             var response = document.getElementById('response');
+             var p = document.createElement('p');
+             p.style.wordWrap = 'break-word';
+             p.appendChild(document.createTextNode(message));
+             response.appendChild(p);
+         }
 
-            function sayMarco() {
-                sock.send("this is the websocket client.");
-            }
-        }
     </script>
 </head>
 
 <body>
-<div id="websocket">
-    websocket div.
-</div>
+    <noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being enabled. Please enable
+        Javascript and reload this page!</h2></noscript>
+    <div>
+        <div>
+            <button id="connect" onclick="connect();">Connect</button>
+            <button id="connectAny" onclick="connectAny();">ConnectAny</button>
+            <button id="disconnect" disabled="disabled" onclick="disconnect();">Disconnect</button>
+        </div>
+        <div id="conversationDiv">
+            <label>What is your name?</label><input type="text" id="name" />
+            <button id="sendName" onclick="sendName();">Send</button>
+            <p id="response"></p>
+        </div>
+    </div>
 </body>
 </html>
