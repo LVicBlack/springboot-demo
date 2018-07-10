@@ -12,10 +12,9 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="IdeaProjects" target="1.5" />
       <module name="springboot-demo" target="1.8" />
       <module name="springboot-websocket" target="1.8" />
-      <module name="springboot-websocket-sockjs" target="1.5" />
+      <module name="springboot-websocket-sockjs" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
