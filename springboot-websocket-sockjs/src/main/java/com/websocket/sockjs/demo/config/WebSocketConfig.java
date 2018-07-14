@@ -16,6 +16,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
         // js.url = "/spring13/app/hello" -> @MessageMapping("/hello") 注释的方法.
         config.enableSimpleBroker("/topic", "/queue");
         config.setApplicationDestinationPrefixes("/app");
+        config.setUserDestinationPrefix("/user");
 
         /* --------------------------------------------------------------------- */
 
@@ -34,7 +35,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         // 在网页上我们就可以通过这个链接 /server/hello ==<c:url value='/hello'></span> 来和服务器的WebSocket连接
-        registry.addEndpoint("/hello").withSockJS();
+        registry.addEndpoint("/hello").setAllowedOrigins("*").withSockJS();
     }
 
 

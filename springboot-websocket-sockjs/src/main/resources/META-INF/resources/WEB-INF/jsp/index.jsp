@@ -28,18 +28,24 @@
          function connect() {
              var socket = new SockJS('/hello');
              stompClient = Stomp.over(socket);
-             stompClient.connect({}, function(frame) {
+             stompClient.connect('guest', 'guest', function(frame) {
                  setConnected(true);
 //                 console.log('Connected: ' + frame);
                  stompClient.subscribe('/topic/greetings', function(greeting){
                      showGreeting(JSON.parse(greeting.body).content);
                  });
+                 // starting line.
+                 stompClient.subscribe('/app/macro',function(shout){
+                     showGreeting(JSON.parse(shout.body).message);
+                 }); // ending line. attention for addr '/app/macro' in client.
+                 stompClient.subscribe('/topic/spittlefeed',function(shout){
+                     showGreeting(JSON.parse(shout.body).message);
+                 });
+                 stompClient.subscribe('/user/queue/notifications',function(greeting){
+                     showGreeting(JSON.parse(greeting.body).content);
+                 });
              });
-             // starting line.
-             stompClient.subscribe('/app/macro',function(greeting){
-                 alert(JSON.parse(greeting.body).content);
-                 showGreeting(JSON.parse(greeting.body).content);
-             }); // ending line. attention for addr '/app/macro' in client.
+
          }
 
          function disconnect() {
@@ -52,7 +58,7 @@
 
          function sendName() {
              var name = document.getElementById('name').value;
-             stompClient.send("/app/hello", {}, JSON.stringify({ 'name': name }));
+             stompClient.send("/app/spittle", {}, JSON.stringify({ 'name': name }));
          }
 
          function showGreeting(message) {
