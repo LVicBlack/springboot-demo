@@ -28,7 +28,7 @@
          function connect() {
              var socket = new SockJS('/hello');
              stompClient = Stomp.over(socket);
-             stompClient.connect('guest', 'guest', function(frame) {
+             stompClient.connect({login: "guest"}, function(frame) {
                  setConnected(true);
 //                 console.log('Connected: ' + frame);
                  stompClient.subscribe('/topic/greetings', function(greeting){
@@ -45,7 +45,17 @@
                      showGreeting(JSON.parse(greeting.body).content);
                  });
              });
+         }
 
+         function connectAny() {
+             var socket = new SockJS('/hello');
+             stompClient = Stomp.over(socket);
+             stompClient.connect({login: "guest2"}, function(frame) {
+                 setConnected(true);
+                 stompClient.subscribe('/user/user/queue/notifications',function(greeting){
+                     showGreeting(JSON.parse(greeting.body).content);
+                 });
+             });
          }
 
          function disconnect() {
@@ -58,7 +68,17 @@
 
          function sendName() {
              var name = document.getElementById('name').value;
-             stompClient.send("/app/spittle", {}, JSON.stringify({ 'name': name }));
+             stompClient.send("/app/hello", {}, JSON.stringify({ 'name': name }));
+         }
+
+         function sendToSelf() {
+             var name = document.getElementById('name').value;
+             stompClient.send("/app/spittle/self", {}, JSON.stringify({ 'name': name }));
+         }
+
+         function sendToOther() {
+             var name = document.getElementById('name').value;
+             stompClient.send("/app/spittle/other", {}, JSON.stringify({ 'name': name }));
          }
 
          function showGreeting(message) {
@@ -84,6 +104,8 @@
         <div id="conversationDiv">
             <label>What is your name?</label><input type="text" id="name" />
             <button id="sendName" onclick="sendName();">Send</button>
+            <button id="sendToSelf" onclick="sendToSelf();">SendToSelf</button>
+            <button id="sendToOther" onclick="sendToOther();">SendToOther</button>
             <p id="response"></p>
         </div>
     </div>

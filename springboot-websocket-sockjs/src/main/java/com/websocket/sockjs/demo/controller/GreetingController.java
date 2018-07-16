@@ -20,8 +20,8 @@ public class GreetingController {
     @Autowired
     SpittleFeedService spittleFeedService;
 
-    //    A1）@MessageMapping注解：表示 handleShout()方法能够处理 指定目的地上到达的消息；
-    //    A2）这个目的地（消息发送目的地url）就是 "/server/app/hello"，其中 "/app" 是 隐含的 ,"/server" 是 springmvc 项目名称；
+    // A1）@MessageMapping注解：表示 handleShout()方法能够处理 指定目的地上到达的消息；
+    // A2）这个目的地（消息发送目的地url）就是 "/server/app/hello"，其中 "/app" 是 隐含的 ,"/server" 是 springmvc 项目名称；
     @MessageMapping("/hello")
     @SendTo("/topic/greetings")
     public Greeting greeting(HelloMessage message) throws InterruptedException {
@@ -52,14 +52,22 @@ public class GreetingController {
     @Autowired
     private SimpMessageSendingOperations simpMessageSendingOperations;
 
-    //broadcast = false把避免推送到一个帐号所有的session中
-    @MessageMapping("/spittle")
-//    @SendToUser(value = "/notifications")
+    // broadcast = false把避免推送到一个帐号所有的session中
+    @MessageMapping("/spittle/other")
+    // @SendToUser(value = "/notifications")
     public Greeting greetingToUser(HelloMessage message) throws InterruptedException {
         System.out.println("receiving " + message.getName());
         Thread.sleep(1000); // simulated delay
         System.out.println("connecting successfully.");
-        spittleFeedService.broadcastSpittleToUser(new Greeting());
+        spittleFeedService.broadcastSpittleToUser(new Greeting(),"guest");
         return new Greeting("Hello user, " + message.getName() + "!");
+    }
+
+    // broadcast = false把避免推送到一个帐号所有的session中
+    @MessageMapping("/spittle/self")
+    @SendToUser(value = "/queue/notifications")
+    public Greeting greetingToUserSelf(HelloMessage message) throws InterruptedException {
+        System.out.println("receiving " + message.getName());
+        return new Greeting("Hello self, " + message.getName() + "!");
     }
 }

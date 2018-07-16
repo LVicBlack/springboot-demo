@@ -1,5 +1,6 @@
 package com.websocket.sockjs.demo.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
 import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
@@ -37,6 +38,13 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
         // 在网页上我们就可以通过这个链接 /server/hello ==<c:url value='/hello'></span> 来和服务器的WebSocket连接
         registry.addEndpoint("/hello").setAllowedOrigins("*").withSockJS();
     }
-
+    @Bean
+    public SocketSessionRegistry SocketSessionRegistry(){
+        return new SocketSessionRegistry();
+    }
+    @Bean
+    public STOMPConnectEventListener STOMPConnectEventListener(){
+        return new STOMPConnectEventListener();
+    }
 
 }
