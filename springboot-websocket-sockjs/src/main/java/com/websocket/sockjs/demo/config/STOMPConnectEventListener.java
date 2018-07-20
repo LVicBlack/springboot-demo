@@ -1,7 +1,9 @@
 package com.websocket.sockjs.demo.config;
 
+import com.websocket.sockjs.demo.vo.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
+import org.springframework.messaging.simp.stomp.StompCommand;
 import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.web.socket.messaging.SessionConnectEvent;
 

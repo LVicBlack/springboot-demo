@@ -32,7 +32,8 @@ public class SpittleFeedService {
 
     public void broadcastSpittleToUser(Greeting greeting,String username) {
         String sessionId=webAgentSessionRegistry.getSessionIds(username).stream().findFirst().get();
-        messaging.convertAndSendToUser(sessionId, "/queue/notifications", new Greeting("I am a msg from SubscribeMapping('/macro')."),createHeaders(sessionId));
+//        messaging.convertAndSendToUser(sessionId, "/queue/notifications", new Greeting("I am a msg from SubscribeMapping('/macro')."),createHeaders(sessionId));
+        messaging.convertAndSendToUser(username, "/queue/notifications", new Greeting("I am a msg from SubscribeMapping('/macro')."));
     }
 
     private MessageHeaders createHeaders(String sessionId) {

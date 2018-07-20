@@ -50,9 +50,9 @@
          function connectAny() {
              var socket = new SockJS('/hello');
              stompClient = Stomp.over(socket);
-             stompClient.connect({login: "guest2"}, function(frame) {
+             stompClient.connect({login: "admin"}, function(frame) {
                  setConnected(true);
-                 stompClient.subscribe('/user/user/queue/notifications',function(greeting){
+                 stompClient.subscribe('/user/queue/notifications',function(greeting){
                      showGreeting(JSON.parse(greeting.body).content);
                  });
              });
