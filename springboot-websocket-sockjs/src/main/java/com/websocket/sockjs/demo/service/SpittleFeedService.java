@@ -32,8 +32,10 @@ public class SpittleFeedService {
 
     public void broadcastSpittleToUser(Greeting greeting,String username) {
         String sessionId=webAgentSessionRegistry.getSessionIds(username).stream().findFirst().get();
-//        messaging.convertAndSendToUser(sessionId, "/queue/notifications", new Greeting("I am a msg from SubscribeMapping('/macro')."),createHeaders(sessionId));
-        messaging.convertAndSendToUser(username, "/queue/notifications", new Greeting("I am a msg from SubscribeMapping('/macro')."));
+        // 模式2 - 获取id、添加MessageHeaders
+        messaging.convertAndSendToUser(sessionId, "/queue/notifications", new Greeting("I am a msg from SubscribeMapping('/macro')."),createHeaders(sessionId));
+        // 模式1 - 需改写StompHeaderAccessor中User信息
+//        messaging.convertAndSendToUser(username, "/queue/notifications", new Greeting("I am a msg from SubscribeMapping('/macro')."));
     }
 
     private MessageHeaders createHeaders(String sessionId) {

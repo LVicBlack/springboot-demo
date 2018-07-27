@@ -1,6 +1,5 @@
 package com.websocket.sockjs.demo.config;
 
-import com.websocket.sockjs.demo.handler.CustomHandshakeHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
@@ -37,14 +36,34 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         // 在网页上我们就可以通过这个链接 /server/hello ==<c:url value='/hello'></span> 来和服务器的WebSocket连接
-        registry.addEndpoint("/hello").setHandshakeHandler(new CustomHandshakeHandler()).setAllowedOrigins("*").withSockJS();
+        registry.addEndpoint("/hello").setAllowedOrigins("*").withSockJS();
     }
+
+    // 模式1 - 改写StompHeaderAccessor中User信息
+//    @Override
+//    public void configureClientInboundChannel(ChannelRegistration registration) {
+//        registration.interceptors(new ChannelInterceptorAdapter() {
+//            @Override
+//            public Message<?> preSend(Message<?> message, MessageChannel channel) {
+//                StompHeaderAccessor accessor =
+//                        MessageHeaderAccessor.getAccessor(message, StompHeaderAccessor.class);
+//
+//                if (StompCommand.CONNECT.equals(accessor.getCommand())) {
+//                    String agentId = accessor.getNativeHeader("login").get(0);
+//                    accessor.setUser(new Authentication(agentId));
+//                }
+//                return message;
+//            }
+//        });
+//    }
+
     @Bean
-    public SocketSessionRegistry SocketSessionRegistry(){
+    public SocketSessionRegistry SocketSessionRegistry() {
         return new SocketSessionRegistry();
     }
+
     @Bean
-    public STOMPConnectEventListener STOMPConnectEventListener(){
+    public STOMPConnectEventListener STOMPConnectEventListener() {
         return new STOMPConnectEventListener();
     }
 
