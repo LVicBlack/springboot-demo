@@ -1,0 +1,2 @@
+FileChannel的transferFrom()方法可以将数据从源通道传输到FileChannel中
+（译者注：这个方法在JDK文档中的解释为将字节从给定的可读取字节通道传输到此通道的文件中）

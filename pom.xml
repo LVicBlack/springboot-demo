@@ -11,6 +11,7 @@
     <modules>
         <module>springboot-websocket</module>
         <module>springboot-websocket-sockjs</module>
+        <module>springboot-nio</module>
     </modules>
 
     <parent>
