@@ -15,8 +15,10 @@ public class Buffer {
 
     public static void main(String[] args) throws IOException {
 //        baseMethod();
-        transferFrom();
+//        transferFrom();
+        transferTo();
     }
+
 
     /**
      * Buffer的基本用法
@@ -28,14 +30,7 @@ public class Buffer {
      * 4.调用clear()方法或者compact()方法
      */
 
-    static void baseMethod() throws IOException {
-
-        // 随机流 不属于IO流，支持对文件的读取和写入随机访问。
-        // mode-rw-可读可写
-        RandomAccessFile aFile = new RandomAccessFile("springboot-nio/src/main/resources/data/nio-data.txt", "rw");
-        // 从文件中读写数据。
-        FileChannel inChannel = aFile.getChannel();
-
+    public static void read(FileChannel inChannel) throws IOException {
         //create buffer with capacity of 48 bytes
         // 创建了一个容量为capacity字节的ByteBuffer对象
         ByteBuffer buf = ByteBuffer.allocate(1024);
@@ -61,10 +56,44 @@ public class Buffer {
             charBuffer.clear(); //make buffer ready for writing
             bytesRead = inChannel.read(buf);
         }
+    }
+
+    static void baseMethod() throws IOException {
+
+        // 随机流 不属于IO流，支持对文件的读取和写入随机访问。
+        // mode-rw-可读可写
+        RandomAccessFile aFile = new RandomAccessFile("springboot-nio/src/main/resources/data/nio-data.txt", "rw");
+        // 从文件中读写数据。
+        FileChannel inChannel = aFile.getChannel();
+
+        read(inChannel);
+
         aFile.close();
     }
 
+    // FileChannel的transferFrom()方法可以将数据从源通道传输到FileChannel中
+    // JDK 尝试从源通道读取count个字节，并将其写入此通道的文件，从给定的position开始。
     static void transferFrom() throws IOException {
+        RandomAccessFile fromFile = new RandomAccessFile("springboot-nio/src/main/resources/data/fromFile.txt", "rw");
+        FileChannel fromChannel = fromFile.getChannel();
+
+        RandomAccessFile toFile = new RandomAccessFile("springboot-nio/src/main/resources/data/toFile.txt", "rw");
+        FileChannel toChannel = toFile.getChannel();
+
+        long position = toChannel.size();
+        long count = fromChannel.size();
+
+        System.out.println(position + ":::" + count);
+        toChannel.transferFrom(fromChannel, position, count);
+
+        read(toChannel);
+
+        toChannel.close();
+    }
+
+    // transferTo()方法将数据从FileChannel传输到其他的channel中。
+    // JDK 尝试从该通道文件中的给定position开始读取最多count个字节，并将其写入目标通道。
+    static void transferTo() throws IOException {
         RandomAccessFile fromFile = new RandomAccessFile("springboot-nio/src/main/resources/data/fromFile.txt", "rw");
         FileChannel fromChannel = fromFile.getChannel();
 
@@ -74,31 +103,11 @@ public class Buffer {
         long position = 0;
         long count = fromChannel.size();
 
-        toChannel.transferFrom(fromChannel, position, count);
+        System.out.println(position + ":::" + count);
+        fromChannel.transferTo(position, count, toChannel);
 
-        ByteBuffer buf = ByteBuffer.allocate(1024);
-        CharBuffer charBuffer = CharBuffer.allocate(1024);
+        read(toChannel);
 
-        // 从该通道读取到给定缓冲区的字节序列。
-        // 从该通道的当前文件位置开始读取字节，然后以实际读取的字节数更新文件位置。 否则，此方法的行为与ReadableByteChannel界面中的规定完全相同。
-        // 返回读取的字节数
-        int bytesRead = toChannel.read(buf); //read into buffer.
-        while (bytesRead != -1) {
-
-            // 翻转这个缓冲区。
-            buf.flip();  //make buffer ready for read
-            decoder.decode(buf, charBuffer, false);
-            charBuffer.flip();
-
-            // 当前位置和极限之间是否存在任何元素。
-            while (charBuffer.hasRemaining()) {
-                System.out.print(charBuffer.get()); // read 1 byte at a time
-            }
-
-            buf.clear(); //make buffer ready for writing
-            charBuffer.clear(); //make buffer ready for writing
-            bytesRead = toChannel.read(buf);
-        }
         toChannel.close();
     }
 
