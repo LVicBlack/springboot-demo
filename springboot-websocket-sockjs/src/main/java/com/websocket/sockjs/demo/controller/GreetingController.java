@@ -96,7 +96,7 @@ public class GreetingController {
     void convertAndSendToUser(Greeting greeting, String username) {
         String sessionId = webAgentSessionRegistry.getSessionIds(username).stream().findFirst().get();
         // 模式2 - 获取id、添加MessageHeaders
-        messaging.convertAndSendToUser(sessionId, "/queue/notifications", new Greeting("I am a msg from SubscribeMapping('/macro')."), createHeaders(sessionId));
+        messaging.convertAndSendToUser(sessionId, "/queue/notifications", new Greeting("I am a msg from Others."), createHeaders(sessionId));
         // 模式1 - 需改写StompHeaderAccessor中User信息
 //        messaging.convertAndSendToUser(username, "/queue/notifications", new Greeting("I am a msg from SubscribeMapping('/macro')."));
     }

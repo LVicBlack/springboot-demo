@@ -15,8 +15,8 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     public void configureMessageBroker(MessageBrokerRegistry config) {
         // 应用程序以 /app 为前缀，而 代理目的地以 /topic 为前缀.
         // js.url = "/spring13/app/hello" -> @MessageMapping("/hello") 注释的方法.
-        config.enableSimpleBroker("/topic", "/queue");
-        config.setApplicationDestinationPrefixes("/app");
+        config.enableSimpleBroker("/topic", "/queue");// 客户端订阅地址的前缀信息
+        config.setApplicationDestinationPrefixes("/app");// 服务端接收地址的前缀
         config.setUserDestinationPrefix("/user");
 
         /* --------------------------------------------------------------------- */
